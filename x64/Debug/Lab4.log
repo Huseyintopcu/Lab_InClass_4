@@ -1,4 +1,2 @@
-﻿  1A.cpp
-C:\Users\herge\source\repos\Lab4\Lab4\1A.cpp(10,12): warning C4244: 'bağımsız değişken': 'time_t' - 'unsigned int' dönüşümü; veri kaybı olabilir
-C:\Users\herge\source\repos\Lab4\Lab4\1A.cpp(12,12): warning C4101: 'temp': yerel değişken başvurusu kaldırıldı
+﻿  2.cpp
   Lab4.vcxproj -> C:\Users\herge\source\repos\Lab4\x64\Debug\Lab4.exe

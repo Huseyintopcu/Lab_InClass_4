@@ -1,5 +1,6 @@
 #include<iostream>
 #include<list>
+#include<time.h>
 
 
 using namespace std;
@@ -9,11 +10,14 @@ int main()
 {
 	srand(time(NULL));
 	list<int> L1, L2,result;
-	int range,temp;
+	int range;
+	bool Endtmp1 = false, Endtmp2 = false;
 	cout << "Size of list is: ";
 	cin >> range;
 	
-	for (int i = 0; i < range; i++)
+
+		
+		for (int i = 0; i < range; i++)
 	{
 		L1.push_back(rand() % 100 + 1);
 		L2.push_back(rand() % 100 + 1);
@@ -61,57 +65,92 @@ int main()
 
 	cout << endl << endl;
 	cout << "Result list is:" << endl;
-	/*for (tmp1; tmp1 !=L1.end(); tmp1++)
-	{
-		for ( tmp2; tmp2 !=L2.end(); tmp2++)
-		{
-			if (*tmp1<*tmp2)
-			{
-				temp = *tmp1;
-			}
-			else if (*tmp2 < *tmp1)
-			{
-				temp = *tmp2;
-			}
-			else
-			{
-				temp = *tmp1;
-			}
-		}
-	}*/
+	
+
+	
 	tmp1 = L1.begin();
 	tmp2 = L2.begin();
 	while (tmp1 != L1.end() || tmp2 != L2.end())
 	{
-		if (*tmp1 < *tmp2)
+		if (Endtmp1==false&&Endtmp2==false)
 		{
-			result.push_back(*tmp1);
-			if (tmp1!=L1.end())
+			if (*tmp1 < *tmp2)
 			{
-				tmp1++;
+				result.push_back(*tmp1);
+				if (*tmp1 != L1.back())
+				{
+					tmp1++;
+				}
+				else
+				{
+					Endtmp1 = true;
+				}
+
 			}
-			
+			else if (*tmp1 > *tmp2)
+			{
+				result.push_back(*tmp2);
+				if (*tmp2 != L2.back())
+				{
+					tmp2++;
+				}
+				else
+				{
+					Endtmp2 = true;
+				}
+			}
+			else
+			{
+				result.push_back(*tmp1);
+				if (*tmp1 != L1.back())
+				{
+					tmp1++;
+				}
+				else
+				{
+					Endtmp1 = true;
+				}
+				if (*tmp2 != L2.back())
+				{
+					tmp2++;
+				}
+				else
+				{
+					Endtmp2 = true;
+				}
+			}
 		}
-		else if (*tmp1 > *tmp2)
+		if (Endtmp1 == true&& Endtmp2 == true)
+		{
+			break;
+		}
+		if (Endtmp1==true)
 		{
 			result.push_back(*tmp2);
-			if (tmp2 != L2.end())
+			if (*tmp2 != L2.back())
 			{
 				tmp2++;
 			}
+			else
+			{
+				tmp2++;
+				tmp1++;
+			}
 		}
-		else
+		if (Endtmp2==true)
 		{
 			result.push_back(*tmp1);
-			if (tmp1 != L1.end())
+			if (*tmp1 != L1.back())
 			{
 				tmp1++;
 			}
-			if (tmp2 != L2.end())
+			else
 			{
 				tmp2++;
+				tmp1++;
 			}
 		}
+		
 	}
 	for (rsl=result.begin(); rsl != result.end(); rsl++)
 	{
